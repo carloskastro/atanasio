@@ -21,7 +21,7 @@
 <body>
 	<main>
 		<div class="container mt-3">
-			<h2 class="text-center">Formulario de inicio</h2>
+			<h2 class="text-center">Formulario de registro</h2>
 			<form action="/action_page.php">
 				<div class="mb-3 mt-3">
 					<label for="email">Usuario:</label>
@@ -37,7 +37,6 @@
 					</label>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
-				<a href="reg_usuario.php" class="btn btn-primary">Registrar</a>
 			</form>
 		</div>
 	</main>
