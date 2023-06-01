@@ -60,7 +60,7 @@
 						<div class="subheading-1 mb-2">ASEM</div>
 						<?php 
 						if ($msg!='') {
-							echo $msg;
+							echo "<p class='text-danger'>".$msg."</p>";
 						}
 						?>
 					</div>

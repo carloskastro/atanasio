@@ -20,11 +20,31 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 	<script type="text/javascript" src="../assets/js/bootstrap.bundle.js"></script>
 </head>
-<body class="bg-dark">
+<body class="">
 	<?php
 	require_once 'conn.php';
 	session_start();
 
+	if (isset($_POST['validar'])) {
+		$result= $conn->prepare('SELECT * FROM administrador WHERE user=?');
+		$result->bindParam(1,$_POST['user']);
+		$result->execute();
+
+		//Pasamos los datos ordenados al arreglo $data
+		if($data=$result->fetch(PDO::FETCH_ASSOC)){
+			
+			if ($_POST['pass'] == $data['pass']) {
+				$_SESSION['adm'] = $data['idadministrador'];
+				header('location: homeadm');
+			} else {
+				echo "Contraseña incorrecta";
+			}
+			
+
+		}else{
+			echo "Datos incorrectos";
+		}
+	}
 
 	?>
 	<main>
@@ -46,15 +66,15 @@
 					<form action="" method="post" enctype="application/x-www-form-urlencoded">
 						<div class="mb-3 mt-3">
 							<label for="user">Usuario:</label>
-							<input type="text" class="form-control"  placeholder="Digite su usuario" name="user">
+							<input type="text" class="form-control"  placeholder="Digite su usuario" name="user" required>
 						</div>
 						<div class="mb-3">
 							<label for="pwd">Contraseña:</label>
-							<input type="password" class="form-control" placeholder="Digite su contraseña" name="pass">
+							<input type="password" class="form-control" placeholder="Digite su contraseña" name="pass" required>
 						</div>
 						<div class="form-check mb-3">
 							<label class="form-check-label">
-								<input class="form-check-input" type="checkbox" name="remember"> Recuerdáme
+								<input class="form-check-input" type="checkbox" name="remember" required> Recuerdáme
 							</label>
 						</div>
 						<button type="submit" class="btn btn-primary" name="validar">Entrar</button>
