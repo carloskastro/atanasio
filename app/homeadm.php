@@ -21,8 +21,34 @@
 	<script type="text/javascript" src="../assets/js/bootstrap.bundle.js"></script>
 </head>
 <body>
+	<?php
+	require_once 'conn.php';
+	session_start();
 
-bienvenido<br>
-<a href="logout.php" class="btn btn-primary">Cerrar</a>
+	if (isset($_SESSION['adm'])) {
+		$search=$conn->prepare('SELECT * FROM administrador WHERE idadministrador=?');
+		$search->bindParam(1,$_SESSION['adm']);
+		$search->execute();
+		$data=$search->fetch(PDO::FETCH_ASSOC);
+	}
+	if (is_array($data)) {
+
+	?>
+
+	<header>
+		<a href="logout.php" class="btn btn-primary">Cerrar Sesión</a>
+		Menu de navegación Navbar
+	</header>
+	<main>
+		Contenido de la página o una bienvenida
+	</main>
+	<footer>
+		Contenido de marca
+	</footer>
+<?php
+}else{
+	header('location: ./');
+}
+?>
 </body>
 </html>

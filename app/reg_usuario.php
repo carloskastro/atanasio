@@ -36,7 +36,8 @@
 		$insert->bindParam(5,$_POST['telefono']);
 		$insert->bindParam(6,$_POST['fnac']);
 		$insert->bindParam(7,$_POST['user']);
-		$insert->bindParam(8,$_POST['pass']);
+		$pass=password_hash($_POST['pass'], PASSWORD_BCRYPT);
+		$insert->bindParam(8,$pass);
 
 		if ($insert->execute()) {
 			$msg="Datos registrados";

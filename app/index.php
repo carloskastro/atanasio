@@ -33,7 +33,7 @@
 		//Pasamos los datos ordenados al arreglo $data
 		if($data=$result->fetch(PDO::FETCH_ASSOC)){
 			
-			if ($_POST['pass'] == $data['pass']) {
+			if (password_verify($_POST['pass'], $data['pass'])) {
 				$_SESSION['adm'] = $data['idadministrador'];
 				header('location: homeadm');
 			} else {
