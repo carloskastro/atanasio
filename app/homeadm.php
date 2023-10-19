@@ -33,22 +33,47 @@
 	}
 	if (is_array($data)) {
 
-	?>
+		?>
 
-	<header>
-		<a href="logout.php" class="btn btn-primary">Cerrar Sesión</a>
-		Menu de navegación Navbar
-	</header>
-	<main>
-		Contenido de la página o una bienvenida
-	</main>
-	<footer>
-		Contenido de marca
-	</footer>
-<?php
-}else{
-	header('location: ./');
-}
-?>
+		<header>
+			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">Logo</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="collapsibleNavbar">
+						<ul class="navbar-nav me-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Inicio</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="?pag=tabla">Tabla</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Link</a>
+							</li>
+						</ul>
+						<div class="d-flex">
+							<a href="logout.php" class="btn btn-primary">Salir</a>			
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<?php
+			$pag=isset($_GET['pag']) ? strtolower($_GET['pag']) : 'homeadm';
+			require_once './'.$pag.'.php';
+			?>
+		</main>
+		<footer>
+			Contenido de marca
+		</footer>
+		<?php
+	}else{
+		header('location: ./');
+	}
+	?>
 </body>
 </html>
