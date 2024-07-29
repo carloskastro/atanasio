@@ -1,158 +1,246 @@
 <!DOCTYPE html>
-<html lang="es-CO">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Fray Julio</title>
-	<meta name="theme-color" content="#000000">
-	<meta name="MobileOptimized" content="width">
-	<!--Tags SEO-->
-	<meta name="author" content="Fray Julio">
-	<meta name="description" content="Aplicativo web para la enseñanza de Bootstrap de los del Fray Julio">
-	<meta name="keywords" content="SENA, sena, Sena, Aplicativo, aplicativo, web, Web">
+<html lang="es-CO" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Favicon-->
-	<link href="media/img/logo.png" rel="icon" type="image/x-icon">
+    <!--Tags SEO-->
+    <meta name="author" content="Carlos Andres Castro" />
+    <meta name="description" content="Aplicativo para la IE San Jose" />
+    <meta name="keywords" content="EVENTO,evento,Evento" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandhledFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar" content="black-traslucent" />
 
-	<!--Styles Bootstrap 5.3.0 alpha3-->
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-	<!--Library Icons Bootstrap-->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-	<script type="text/javascript" src="assets/js/bootstrap.bundle.js"></script>
-</head>
-<body>
-	<header>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img src="media/img/logo.png" alt="Logo Sena" style="width:40px;" class="rounded-pill">
-				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-label="Boton menú">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#intro" data-scroll>Intro</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#team">Equipo</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#mision">Mision</a>
-						</li>
-					</ul>
-					<div class="d-flex">
-						<a class="btn btn-primary" href="app/">Entrar</a>
-					</div>
-				</div>
-			</div>
-		</nav>
-		
-	</header>
-	<main class="pt-4">
-		<!-- Carousel -->
-		<div id="demo" class="carousel slide" data-bs-ride="carousel">
+    <!--Favicon and title-->
+    <title>San José</title>
+    <link rel="icon" type="image/x-icon" href="media/img/icon.png" />
+    <link rel="apple-touch-icon" type="image/png" href="media/img/icon.png" />
 
-			<!-- Indicators/dots -->
-			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-				<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-				<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-			</div>
+    <!--Styles Bootstrap 5.3.3-->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="media/img/logo.png"
+              alt="Avatar Logo"
+              style="width: 40px"
+              class=""
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavbar"
+            aria-label="Boton de menú"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#proyecto">Proyecto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Integrantes</a>
+              </li>
+            </ul>
+            <div class="d-flex"> 
+              <button class="btn btn-primary" type="button" onclick="location.href='app/'">Entrar</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Carousel -->
+      <div id="demo" class="carousel slide my-5 py-3" data-bs-ride="carousel">
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide-to="0"
+            class="active"
+            aria-label="Boton carousel1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide-to="1"
+            aria-label="Boton carousel2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide-to="2"
+            aria-label="Boton carousel3"
+          ></button>
+        </div>
 
-			<!-- The slideshow/carousel -->
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="media/img/foto1.jpg" alt="Foto uno" class="d-block w-100">
-				</div>
-				<div class="carousel-item">
-					<img src="media/img/foto2.jpg" alt="Foto 2" class="d-block w-100">
-				</div>
-				<div class="carousel-item">
-					<img src="media/img/foto3.jpg" alt="Foto 3" class="d-block w-100">
-				</div>
-			</div>
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="media/img/foto1.jpg"
+              alt="Los Angeles"
+              class="d-block w-100"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="media/img/foto2.jpg"
+              alt="Chicago"
+              class="d-block w-100"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="media/img/foto3.jpg"
+              alt="New York"
+              class="d-block w-100"
+            />
+          </div>
+        </div>
 
-			<!-- Left and right controls/icons -->
-			<button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-				<span class="carousel-control-next-icon"></span>
-			</button>
-		</div>
+        <!-- Left and right controls/icons -->
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide="prev"
+          aria-label="Boton carousel prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide="next"
+          aria-label="Boton carousel next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </header>
 
-		<div class="container">
+    <main>
+      
+      <!--Sección aplicativo-->
+      <section id="proyecto" class="container py-5 text-center">
 
-			<section id="intro">
-				Introducción
+        <style>
+          #drop_zone {
+  border: 5px solid blue;
+  width: 200px;
+  height: 100px;
+}
+        </style>
+        <div
+  id="drop_zone"
+  ondrop="dropHandler(event);"
+  ondragover="dragOverHandler(event);">
+  <p>Arrastra y suelta uno o más archivos a esta zona ...</p>
+</div>
 
-			</section>
-			<section>
-				<div class="row featurette">
-					<div class="col-md-7 order-md-2">
-						<h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for yourself.</span></h2>
-						<p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-					</div>
-					<div class="col-md-5 order-md-1">
-						<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
-					</div>
-				</div>
-			</section>
+<script>
+  function dropHandler(ev) {
+  console.log("Fichero(s) arrastrados");
 
-			<section id="team">
-				Team
+  // Evitar el comportamiendo por defecto (Evitar que el fichero se abra/ejecute)
+  ev.preventDefault();
 
-			</section>
+  if (ev.dataTransfer.items) {
+    // Usar la interfaz DataTransferItemList para acceder a el/los archivos)
+    for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+      // Si los elementos arrastrados no son ficheros, rechazarlos
+      if (ev.dataTransfer.items[i].kind === "file") {
+        var file = ev.dataTransfer.items[i].getAsFile();
+        console.log("... file[" + i + "].name = " + file.name);
+      }
+    }
+  } else {
+    // Usar la interfaz DataTransfer para acceder a el/los archivos
+    for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+      console.log(
+        "... file[" + i + "].name = " + ev.dataTransfer.files[i].name,
+      );
+    }
+  }
 
+  // Pasar el evento a removeDragData para limpiar
+  removeDragData(ev);
+}
+</script>
+      </section>
+      <!--Sección aplicativo-->
 
-			<section id="mision">
-				Mision
+      <!--Sección proyecto-->
+      <section id="proyecto" class="container py-5 text-center">
+        <div class="row">
+          <div class="col-sm-4 my-auto">
+            <img
+              src="media/img/logo.png"
+              alt="Avatar Logo"
+              style="width: 100px"
+              class=""
+            />
+          </div>
+          <div class="col-sm-8">
+            <h1 class="py-5">Proyecto</h1>
+              <p class="text-start">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus aliquet sagittis velit a venenatis. Sed fringilla nec
+                felis in lobortis. Cras non ornare quam. Nullam lobortis congue
+                ex, ac posuere mi mattis ac. Proin pretium sollicitudin neque,
+                nec pharetra nisi placerat eget. In tempor mattis sollicitudin.
+                Aenean pellentesque massa lectus, sit amet dictum augue accumsan
+                sit amet. Praesent non arcu elit. Class aptent taciti sociosqu
+                ad litora torquent per conubia nostra, per inceptos himenaeos.
+                Proin interdum, dui ut ultrices vehicula, mi nulla faucibus
+                turpis, eu sollicitudin mauris metus et justo. Donec tincidunt
+                augue vitae varius gravida. Nullam at elementum justo. Ut
+                accumsan dui quis felis mattis, non ornare augue efficitur.
+                Aenean ullamcorper sollicitudin lorem non sodales. Vivamus
+                vulputate quam justo, eget faucibus nibh fringilla vitae.
+                Curabitur non pulvinar dolor. Donec non nibh tempus, viverra
+                felis ut, auctor dolor. Nullam bibendum sagittis condimentum.
+                Nulla varius suscipit turpis blandit elementum. Morbi porta sem
+                ac tincidunt porta. Integer ut libero eget nulla blandit
+                ultricies. Sed dictum purus quis magna venenatis, feugiat
+                faucibus leo scelerisque. Duis iaculis vel nisl sit amet
+                feugiat. Integer vitae justo maximus augue vulputate
+                scelerisque.
+              </p>
+          </div>
+        </div>
+      </section>
+      <!--Sección proyecto-->
+    </main>
 
-			</section>
-		</div>
+    <footer class="bg-dark">
+      <p class="my-5 py-4 text-center text-light" data-bs-toggle="tooltip" title="CACJX">Carlos Andres Castro - Copyright© 2024</p>
+    </footer>
 
+    <script type="text/javascript" src="assets/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript">
+      //¿Cómo esconder el "#" hash de una url
+       window.onhashchange = function () {
+        window.history.pushState('', document.title, window.location.pathname)
+        }
+    </script>
 
-
-		
-	</main>
-	<footer class="text-center text-white">
-		<!-- Grid container -->
-		<div class="container p-4 pb-0">
-			<!-- Section: Social media -->
-			<section class="mb-4">
-				<!-- Facebook -->
-				<a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button" aria-label="facebook_url"><i class="fab fa-facebook-f"></i></a>
-
-				<!-- Twitter -->
-				<a class="btn text-white btn-floating m-1" style="background-color: #55acee;" href="#!"	role="button" aria-label="twitter-url"><i class="fab fa-twitter"></i></a>
-
-				<!-- Google -->
-				<a class="btn text-white btn-floating m-1" style="background-color: #dd4b39;" href="#!"	role="button"  aria-label="google-url"><i class="fab fa-google"></i></a>
-
-				<!-- Instagram -->
-				<a	class="btn text-white btn-floating m-1"	style="background-color: #ac2bac;"	href="#!" role="button" aria-label="instagram-url"><i class="fab fa-instagram"></i></a>
-
-				<!-- Linkedin -->
-				<a class="btn text-white btn-floating m-1" style="background-color: #0082ca;" href="#!" role="button" aria-label="linkedin-url"><i class="fab fa-linkedin-in"></i></a>
-				<!-- Github -->
-				<a class="btn text-white btn-floating m-1"	style="background-color: #333333;" href="#!" role="button" aria-label="github-url"><i class="fab fa-github"></i></a>
-			</section>
-			<!-- Section: Social media -->
-		</div>
-		<!-- Grid container -->
-
-		<!-- Copyright -->
-		<div class="bg-dark text-center p-3">
-			© 2020 Copyright:
-			<a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-		</div>
-		<!-- Copyright -->
-	</footer>
-
-</body>
+  </body>
 </html>
