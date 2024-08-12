@@ -6,6 +6,7 @@ if (isset($_SESSION['adm'])) {
     $search=$conn->prepare('SELECT * FROM adm WHERE idadm=?');
     $search->bindParam(1,$_SESSION['adm']);
     $search->execute();
+    if ($data=$search->fetch(PDO::FETCH_ASSOC)) {
 }
 
 ?>
@@ -26,14 +27,11 @@ if (isset($_SESSION['adm'])) {
 </head>
 
 <body>
-    <?php
-    if ($data=$search->fetch(PDO::FETCH_ASSOC)) {
-    ?>
     <main class="form-register w-100 m-auto p-auto">
         <?php
         echo "Hola ".$data['fname'];
         ?>
-        <a href="./">Salir</a>
+        <a href="logout.php">Salir</a>
        
 
     </main>
