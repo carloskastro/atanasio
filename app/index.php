@@ -1,20 +1,23 @@
 <?php
 require_once 'conn.php';
+session_start();
 
-if (isset($_POST['btn-reg'])) {
-    $sql = $conn->prepare("INSERT INTO adm(fname,lname,email,pass) VALUES(?,?,?,?)");
-    $sql->bindParam(1, $_POST['fname']);
-    $sql->bindParam(2, $_POST['lname']);
-    $sql->bindParam(3, $_POST['email']);
-    $pass=password_hash($_POST['pass'], PASSWORD_BCRYPT);
-    $sql->bindParam(4, $pass);
+if (isset($_POST['validar'])) {
+    $stmt=$conn->prepare('SELECT * FROM adm WHERE email=?');
+    $stmt->bindParam(1,$_POST['email']);
+    $stmt->execute();
 
-    if ($sql->execute()) {
-        echo "Datos Registrados";
-        } else {
-        echo "Datos no registrados";
+    if ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        if (password_verify($_POST['pass'], $data['pass'])) {
+            $_SESSION['adm']= $data['idadm'];
+            header('location:homead.php'); 
+        }else{
+            echo "Contraseña incorrecta";
         }
+    }else{
+        echo "Usuario incorrecto";
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es-CO" data-bs-theme="dark">
@@ -22,31 +25,24 @@ if (isset($_POST['btn-reg'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atanasio_Reg_admin</title>
+    <title>Atanasio</title>
+    <!--Favicon and title-->
+    <link rel="icon" type="image/x-icon" href="../assets/img/logosena.png" />
+    <link rel="apple-touch-icon" type="image/png" href="../assets/img/iconsena.png" />
 
     <!--Styles Bootstrap 5.3.3-->
     <link rel="stylesheet" href="../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
 
-<body style="background-color: lightblue;">
-    <main class="form-register w-100 m-auto">
+<body>
+    <main class="form-register w-100 m-auto p-auto">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Registro del Admin</h5>
+                <h5 class="card-title">Inicio de Sesión</h5>
             </div>
             <div class="card-body">
                 <form class="form-floating" action="" method="post">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="fname" name="fname"
-                            placeholder="Escriba sus nombres">
-                        <label for="fname">Nombres</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="lname" placeholder="Escriba sus nombres"
-                            name="lname">
-                        <label for="lname">Apellidos</label>
-                    </div>
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" name="email"
                             placeholder="Escriba su correo">
@@ -58,17 +54,17 @@ if (isset($_POST['btn-reg'])) {
                         <label for="pass">Contraseña</label>
                     </div>
                     <div class="form-floating mb-3 btn-group w-100">
-                        <button class="btn btn-primary" type="submit" name="btn-reg">Registrar</button>
+                        <button class="btn btn-primary" type="submit" name="validar">Ingresar</button>
                         <button class="btn btn-danger" type="submit">Cancelar</button>
                     </div>
+                    <a href="reg_adm.php">Registrar administrador</a>
                 </form>
             </div>
         </div>
 
     </main>
-    <footer>
-        footer
-
+    <footer class="">
+      <p class="my-5 py-4 text-center" data-bs-toggle="tooltip" title="CACJX">Carlos Andres Castro - Copyright© 2024</p>
     </footer>
 
     <script src="../assets/js/bootstrap.bundle.js"></script>
