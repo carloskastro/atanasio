@@ -3,21 +3,21 @@ require_once 'conn.php';
 session_start();
 
 if (isset($_POST['validar'])) {
-    $stmt=$conn->prepare('SELECT * FROM adm WHERE email=?');
-    $stmt->bindParam(1,$_POST['email']);
+    $stmt = $conn->prepare('SELECT * FROM adm WHERE email=?');
+    $stmt->bindParam(1, $_POST['email']);
     $stmt->execute();
 
     if ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
         if (password_verify($_POST['pass'], $data['pass'])) {
-            $_SESSION['adm']= $data['idadm'];
-            header('location:homead.php'); 
-        }else{
-            echo "Contraseña incorrecta";
+            $_SESSION['adm'] = $data['idadm'];
+            header('location:homead.php');
+            } else {
+            $msg = array("Contraseña incorrecta", "warning");
+            }
+        } else {
+        $msg = array("Usuario incorrecto", "danger");
         }
-    }else{
-        echo "Usuario incorrecto";
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="es-CO" data-bs-theme="dark">
@@ -36,7 +36,13 @@ if (isset($_POST['validar'])) {
 </head>
 
 <body>
-    <main class="form-register w-100 m-auto p-auto">
+    <main class="form-register w-100 m-auto pt-5 mt-5">
+        <?php if (isset($msg)) { ?>
+            <div class="alert alert-<?php echo $msg['1']; ?> alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Alerta!</strong> <?php echo $msg['0']; ?>
+            </div>
+        <?php } ?>
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">Inicio de Sesión</h5>
@@ -64,7 +70,8 @@ if (isset($_POST['validar'])) {
 
     </main>
     <footer class="">
-      <p class="my-5 py-4 text-center" data-bs-toggle="tooltip" title="CACJX">Carlos Andres Castro - Copyright© 2024</p>
+        <p class="my-5 py-4 text-center" data-bs-toggle="tooltip" title="CACJX">Carlos Andres Castro - Copyright© 2024
+        </p>
     </footer>
 
     <script src="../assets/js/bootstrap.bundle.js"></script>
