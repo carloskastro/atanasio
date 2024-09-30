@@ -31,14 +31,12 @@ if (isset($_POST['btn-reg'])) {
 
 <body style="background-color: lightblue;">
     <main class="form-register w-100 m-auto">
-        <!--Ventana de alerta-->
         <?php if (isset($msg)) { ?>
             <div class="alert alert-<?php echo $msg['1']; ?> alert-dismissible">
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 <strong>Alerta!</strong> <?php echo $msg['0']; ?>
             </div>
             <?php } ?>
-      <!--Ventana de alerta-->
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">Registro del Admin</h5>

@@ -1,9 +1,30 @@
+<?php
+if (isset($_GET['del'])) {
+    $stmt = $conn->prepare('DELETE FROM adm WHERE idadm=?');
+    $stmt->bindParam(1, $_GET['del']);
+    $stmt->execute();
+    if ($stmt) {
+        $msg = array("Datos eliminados", "success");
+        } else {
+        $msg = array("Datos no eliminados", "danger");
+        }
+    }
+?>
 <!--Styles Datatables-->
 <link rel="stylesheet" href="../assets/datatables/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="../assets/datatables/css/buttons.bootstrap5.min.css">
 <link rel="stylesheet" href="../assets/datatables/css/responsive.dataTables.min.css">
 
+
 <h1 class="pt-5 mt-5">Tabla</h1>
+   <!--Alerta eliminar-->
+   <?php if (isset($msg)) { ?>
+        <div class="alert alert-<?php echo $msg['1']; ?> alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Alerta!</strong> <?php echo $msg['0']; ?>
+        </div>
+    <?php } ?>
+    <!--Alerta eliminar-->
 
 <table class="table table-striped table-hover table-bordered" id="tableres">
     <thead>
@@ -12,21 +33,50 @@
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>Email</th>
+            <th>Operaciones</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $result=$conn->prepare('SELECT * FROM adm');
+        $result = $conn->prepare('SELECT * FROM adm');
         $result->execute();
-        while ($view=$result->fetch(PDO::FETCH_ASSOC)) {
-     
-        ?>
-        <tr>
-            <td><?php echo $view['idadm']; ?></td>
-            <td><?php echo $view['fname']; ?></td>
-            <td><?php echo $view['lname']; ?></td>
-            <td><?php echo $view['email']; ?></td>                       
-        </tr>
+        while ($view = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            ?>
+            <tr>
+                <td><?php echo $view['idadm']; ?></td>
+                <td><?php echo $view['fname']; ?></td>
+                <td><?php echo $view['lname']; ?></td>
+                <td><?php echo $view['email']; ?></td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-warning">Editar</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#eliminar=<?php echo $view['idadm']; ?>">Eliminar</button>
+                </td>
+            </tr>
+            <!--Operaciones-->
+            <div class="modal fade" id="eliminar=<?php echo $view['idadm']; ?>">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Mensaje de Alerta</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Realmente desea eliminar el registro con los datos:
+                                <?php echo $view['email'] . " " . $view['fname']; ?> ?
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="homead.php?page=tabla&del=<?php echo $view['idadm']; ?>"
+                                class="btn btn-success">Confirmar</a>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Operaciones-->
         <?php } ?>
     </tbody>
 </table>
